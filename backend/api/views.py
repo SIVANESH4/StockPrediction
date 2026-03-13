@@ -1,12 +1,8 @@
 from django.http import JsonResponse
+from students.models import Student
 
 # Create your views here.
 def stdapi(request):
-    students = [
-        {
-         'id':1,
-         'Name': 'Siva',
-         'Dept': 'IT',
-        },
-    ]
-    return JsonResponse(students, safe=False)
+    std = Student.objects.all()
+    std_list = list(std.values())
+    return JsonResponse(std_list, safe=False)
