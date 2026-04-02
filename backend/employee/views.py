@@ -8,6 +8,7 @@ from django.http import Http404
 from rest_framework import mixins, generics
 
 # Create your views here.
+'''
 class Employees(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
     queryset = Employee_table.objects.all()
     serializer_class = EmployeeSerializer
@@ -25,4 +26,13 @@ class EmployeesDetails(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixin
     def put(self, request, pk):
         return self.update(request, pk)
     def delete(self, request, pk):
-        return self.destroy(request, pk)
+        return self.destroy(request, pk)'''
+
+class Employees(generics.ListCreateAPIView):
+    queryset = Employee_table.objects.all()
+    serializer_class = EmployeeSerializer
+
+class EmployeesDetails(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Employee_table.objects.all()
+    serializer_class = EmployeeSerializer
+    lookup_field = 'pk'
