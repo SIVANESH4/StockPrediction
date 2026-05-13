@@ -11,4 +11,3 @@ class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog_table
         fields = '__all__'
-

@@ -11,6 +11,7 @@ class CommentView(generics.ListCreateAPIView):
     queryset = Comment_table.objects.all()
     serializer_class = CommentSerializer
 
+#Primarykeybased
 class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment_table.objects.all()
     serializer_class = CommentSerializer
