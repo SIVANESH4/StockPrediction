@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 from rest_framework import mixins, generics, viewsets
+from .pagination import CustomPagination
+from .filters import EmployeeFilters
 
 # Create your views here.
 '''
@@ -29,16 +31,17 @@ class EmployeesDetails(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixin
         return self.destroy(request, pk)
 '''
 
-'''
 class Employees(generics.ListCreateAPIView):
     queryset = Employee_table.objects.all()
     serializer_class = EmployeeSerializer
+    pagination_class = CustomPagination
+    filterset_class = EmployeeFilters
 
 class EmployeesDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee_table.objects.all()
     serializer_class = EmployeeSerializer
     lookup_field = 'pk'
-'''
+
 
 '''class EmployeeViewSet(viewsets.ViewSet):
     def list(self, request):
@@ -48,9 +51,11 @@ class EmployeesDetails(generics.RetrieveUpdateDestroyAPIView):
     def retrieve(self, request, pk=None):
         employee = get_object_or_404(Employee_table,pk=pk)
         serializer = EmployeeSerializer(employee)
-        return Response(serializer.data)'''
+        return Response(serializer.data)
         
 
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee_table.objects.all()
     serializer_class = EmployeeSerializer
+    pagination_class = CustomPagination
+'''
