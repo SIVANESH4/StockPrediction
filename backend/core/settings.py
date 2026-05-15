@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'students',
     'employee',
     'Blog',
-    'django_filters'
+    'django_filters',
+    'Corporate',
 ]
 
 MIDDLEWARE = [
